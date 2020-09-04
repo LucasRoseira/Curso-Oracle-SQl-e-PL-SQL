@@ -106,7 +106,7 @@ where EMPLOYEE_ID  in (select EMPLOYEE_ID from JOB_HISTORY);
 
 
 select * from JOB_HISTORY
-where EMPLOYEE_ID='101'
+where EMPLOYEE_ID='101';
 
 select  * from EMPLOYEES
 where EMPLOYEE_ID='101';
