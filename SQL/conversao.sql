@@ -6,16 +6,16 @@ select cast(1932.650 as integer) conversao from dual;
 
 
 select cast(a.EMPLOYEE_ID as integer) teste
-from HR.EMPLOYEES a;
+from EMPLOYEES a;
 
 select cast(a.EMPLOYEE_ID as varchar2(3)) teste
-from HR.EMPLOYEES a;
+from EMPLOYEES a;
 
---   A funÁ„o TO_DATE() converte de cadeia de caracteres em data. ¿ data resultante adicionamos um dia;
---  A data obtida pelo comando anterior È apresentada usando o formato definido pelo comando ALTER SESSION SET NLS_DATE_FORMAT;
+--   A fun√ß√£o TO_DATE() converte de cadeia de caracteres em data. √Ä data resultante adicionamos um dia;
+--  A data obtida pelo comando anterior √© apresentada usando o formato definido pelo comando ALTER SESSION SET NLS_DATE_FORMAT;
 
 
---TO_DATE(string, m·scara de data)
+--TO_DATE(string, m√°scara de data)
 --alterar sessao
 --verificar antes de alterar sessao
 ALTER SESSION SET NLS_DATE_FORMAT='yyyy-mm-dd hh24:mi:ss';
@@ -26,11 +26,11 @@ ALTER SESSION SET NLS_DATE_FORMAT='yy-mm-dd hh24:mi:ss';
 select
    a.hire_date,
    to_date(a.hire_date,'yyyy-mm-dd hh24:mi:ss')aaaammdd
-from HR.EMPLOYEES a;
+from EMPLOYEES a;
 
 --
 -- TO_CHAR(data)
---TO_CHAR(data, m·scara_data, [nls_date_format] )
+--TO_CHAR(data, m√°scara_data, [nls_date_format] )
 
 alter session set nls_territory='PORTUGAL';-- BRAZIL
 alter session set nls_language='PORTUGUESE';
@@ -39,7 +39,7 @@ select
   a.first_name,
   a.hire_date,
    to_char(a.hire_date,'day, dd "de" Month "de" YYYY')Data_entenso
-from HR.EMPLOYEES a;
+from EMPLOYEES a;
 
 
 SELECT  to_char(SYSDATE,'day, dd "de" Month "de" YYYY')Data_entenso FROM DUAL
@@ -52,13 +52,13 @@ alter session set nls_date_format='yyyy-mm-dd hh24:mi:ss';
 
 select 
   to_char(to_date('2018-07-17 14:15:45','yyyy-mm-dd hh24:mi:ss'), 'hh:mi:ss') "Hora Minutos Segundos",
-  to_char(to_date('2018-07-17 14:15:45','yyyy-mm-dd hh24:mi:ss'), 'scc'     ) "SÈculo",
+  to_char(to_date('2018-07-17 14:15:45','yyyy-mm-dd hh24:mi:ss'), 'scc'     ) "S√©culo",
   to_char(to_date('2018-07-17 14:15:45','yyyy-mm-dd hh24:mi:ss'), 'q'       ) "Trimestre",
   to_char(to_date('2018-07-17 14:15:45','yyyy-mm-dd hh24:mi:ss'), 'HH24'    ) "Hora em formato 24",
   to_char(to_date('2018-07-17 14:15:45','yyyy-mm-dd hh24:mi:ss'), 'HH'      ) "Hora formato 12"
 from dual;
   
---TO_CHAR(n˙mero)
+--TO_CHAR(n√∫mero)
 
 select 
   a.first_name,
@@ -66,7 +66,7 @@ select
   to_char(a.SALARY,'$9999999')salario1,
   to_char(a.SALARY,'$999')salario2,
   '$'||a.SALARY valor
-from HR.EMPLOYEES a;
+from EMPLOYEES a;
 
 --TO_NUMBER(string)
 
@@ -86,7 +86,7 @@ select
   a.hire_date,
   a.COMMISSION_PCT,
    nvl(a.COMMISSION_PCT,0) c1
-from HR.EMPLOYEES a;
+from EMPLOYEES a;
 
 
 
