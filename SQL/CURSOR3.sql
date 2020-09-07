@@ -4,24 +4,28 @@ DECLARE
 viDFunc EMPLOYEES.EMPLOYEE_ID%type;
 vNome EMPLOYEES.FIRST_NAME%type;
 VSalario EMPLOYEES.SALARY%type;
+v_posicao int default 0;
 -- Declaração de cursores
-CURSOR cs_top_10 is
+CURSOR cs_salario is
  SELECT a.EMPLOYEE_ID,a.FIRST_NAME,a.SALARY
 FROM EMPLOYEES a
 order by a.salary desc;
 BEGIN
 -- Abre cursor se ainda não estiver aberto
-IF NOT cs_top_10%ISOPEN THEN
-OPEN cs_top_10;
+IF NOT cs_salario%ISOPEN THEN
+OPEN cs_salario;
 END IF;
--- Executa um loop com 10 ciclos
-FOR i IN 1..10 LOOP
+-- Executa um loop 
+LOOP
 -- Extrai dados o registro corrente do cursor e avança para o próximo
-FETCH cs_top_10 INTO  viDFunc,vNome,VSalario;
+FETCH cs_salario INTO  viDFunc,vNome,VSalario;
+
+-- Sai do Loop quando não houver mais registros para processar
+EXIT WHEN cs_salario%NOTFOUND;
 -- Imprime dados extraídos na tela
-dbms_output.put_line(i||'-'||viDFunc||' - '||vNome||' - '||VSalario);
+v_posicao:=v_posicao+1;
+dbms_output.put_line(v_posicao||' - '||viDFunc||' - '||vNome||' - '||VSalario);
 END LOOP;
 -- Fechar cursor
-CLOSE cs_top_10;
+CLOSE cs_salario;
 END;
-/
