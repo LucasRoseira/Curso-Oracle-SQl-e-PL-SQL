@@ -1,13 +1,13 @@
 SET SERVEROUTPUT ON
 DECLARE
 -- Declaração de variáveis
-viDFunc EMPLOYEES.EMPLOYEE_ID%type;
-vNome EMPLOYEES.FIRST_NAME%type;
-VSalario EMPLOYEES.SALARY%type;
+viDFunc HR.EMPLOYEES.EMPLOYEE_ID%type;
+vNome HR.EMPLOYEES.FIRST_NAME%type;
+VSalario HR.EMPLOYEES.SALARY%type;
 -- Declaração de cursores
 CURSOR cs_top_10 is
  SELECT a.EMPLOYEE_ID,a.FIRST_NAME,a.SALARY
-FROM EMPLOYEES a
+FROM HR.EMPLOYEES a
 order by a.salary desc;
 BEGIN
 -- Abre cursor se ainda não estiver aberto
